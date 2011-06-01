@@ -1,5 +1,4 @@
 #include "pugixml.hpp"
-#include "foreach.hpp"
 
 #include <iostream>
 #include <string>
