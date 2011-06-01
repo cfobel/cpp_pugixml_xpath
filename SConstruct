@@ -1,1 +1,1 @@
-Program(['traverse_base.cpp', 'pugixml.cpp'], CPPPATH=['.', '../contrib'])
+Program(['main.cpp', 'pugixml.cpp'])
