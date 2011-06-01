@@ -1,48 +1,30 @@
-#include <boost/foreach.hpp>
 #include "pugixml.hpp"
 #include "foreach.hpp"
 
-#include <string>
 #include <iostream>
-#include <vector>
+#include <string>
+#include <cstdlib>
 
 using namespace std;
 
-template <class T>
-string process_node(T &node) {
-    string result;
-    string name = node.name();
-
-    if(name == "BBCostCalculator") {
-        cout << "creating a BBCostCalculator" << endl;
-        result = "BBCostCalculator"; 
-    } else if(name == "TimingCalculator") {
-        cout << "creating a TimingCalculator" << endl;
-        result = "TimingCalculator";
-    } else if(name == "CostAggregator") {
-        result = "(";
-        BOOST_FOREACH(pugi::xml_node &child, node) {
-            result += process_node(child) + ",";
-        }
-        result += ")";
-        cout << "creating a " << name << ": " << result << endl;
-    } else {
-        cout << "unrecognized node type: " << name << endl;
-    }
-    return result;
-}
-
-int main() {
-    vector<int> level_count;
+int main(int argc, char** argv) {
     pugi::xml_document doc;
-    if (!doc.load_file("test.xml")) return -1;
 
+    if(argc != 3) {
+        cerr << "Usage: " << argv[0] << " <xml_path> <xpath_query>" << endl;
+        exit(-1);
+    }
+    if (!doc.load_file(argv[1])) {
+        cerr << "Error reading file: " << argv[1] << endl;
+        exit(-1);
+    }
 
-    //[code_traverse_base_basic
-    pugi::xml_node root = doc.first_child();
-    cout << process_node(root) << endl;
-    //]
-    return 0;
+    // Select nodes via compiled query
+    pugi::xpath_query query_remote_tools(argv[2]);
+    pugi::xpath_node_set tools = query_remote_tools.evaluate_node_set(doc);
+
+    for(int i = 0; i < tools.size(); i++) {
+        pugi::xpath_node const &tool = tools[i];
+        tool.node().print(cout);
+    }
 }
-
-// vim:et

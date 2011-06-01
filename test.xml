@@ -1,9 +1,14 @@
 <?xml version="1.0"?>
-<CostAggregator>
-    <BBCostCalculator />
-    <TimingCalculator />
-    <CostAggregator>
-        <BBCostCalculator />
-        <TimingCalculator />
-    </CostAggregator>
-</CostAggregator>
+<root>
+  <configuration name="Config 1">
+    <param>ITEM1: p1</param>
+    <param>ITEM1: p2</param>
+    <param>ITEM1: p3</param>
+  </configuration>
+  <configuration name="Config 2">
+    <param>ITEM2: p1</param>
+    <param>ITEM2: p2</param>
+    <param>ITEM2: p3</param>
+    <param>ITEM2: p4</param>
+  </configuration>
+</root>
