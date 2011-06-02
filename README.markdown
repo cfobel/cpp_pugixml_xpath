@@ -11,3 +11,8 @@ where:
 
 The output of the program is the combined contents of XML nodes matched by the 
 XPath query.
+
+Included XML files:
+
+ * `test.xml` - example generated from Python [lxml example](https://github.com/cfobel/python_lxml) project
+ * `books.xml` - example from XPath tutorial at: <http://www.w3develop.com/xpath/xpath_intro.asp.htm>
