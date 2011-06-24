@@ -1,8 +1,10 @@
-# pugixml XPath example #
+# pugixml XPath examples #
 
-An program demostrating XPath using pugixml.
+## XPath query ##
 
-Usage: ./traverse_base <xml_path> <xpath_query>
+A program demonstrating XPath using pugixml.
+
+Usage: ./main <xml_path> <xpath_query>
 
 where:
 
@@ -16,3 +18,13 @@ Included XML files:
 
  * `test.xml` - example generated from Python [lxml example](https://github.com/cfobel/python_lxml) project
  * `books.xml` - example from XPath tutorial at: <http://www.w3develop.com/xpath/xpath_intro.asp.htm>
+
+## Node construction ##
+
+A program demonstrating the use of XPath queries, along with node construction.
+
+Usage: ./construct
+
+The output of the program shows the initial XML contents, followed by the
+contents after new nodes are added to `Placer/CostConfig/CostCalculators` and
+`Placer/CostConfig/CostSummaries` 
